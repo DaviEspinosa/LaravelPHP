@@ -12,3 +12,4 @@ Route::get('/contatos', function () {
     return view('contatos');
 });
 
+
