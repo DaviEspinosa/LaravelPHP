@@ -13,7 +13,7 @@ class ProdutoController extends Controller
     public function index()
     {
         $produtos = Produtos::all();
-        return view('produtos', compact('produtos'));
+        return view('produtos.index', compact('produtos'));
     }
 
     /**
@@ -31,7 +31,7 @@ class ProdutoController extends Controller
     {
         $request->validate([
             'nome'=>'requierd',
-            'preco'=>'required|decimal'
+            'preco'=>'required|numeric'
         ]);
         
         Produtos::create($request->all());
@@ -76,8 +76,7 @@ class ProdutoController extends Controller
     {
         $produto->delete();
 
-        return redirect()->route('produtos.index')
-                         ->with('success', 'Produto Deletado com Sucesso.');
+        return redirect()->route('produtos.index')->with('success', 'Produto Deletado com Sucesso.');
 
     }
 }
