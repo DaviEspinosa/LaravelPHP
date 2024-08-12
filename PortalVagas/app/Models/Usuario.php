@@ -12,7 +12,7 @@ class Usuario extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $fillable =[
-        'name', 'email', 'password',
+        'nome', 'email', 'password',
     ];
 
     protected $hidden =[

@@ -12,7 +12,7 @@
 
 
         <div class="form-group">
-            <label for="name">Nome</label>
+            <label for="nome">Nome</label>
             <input type="text" name="nome" class="form-control" required>
         </div>
 
