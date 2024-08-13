@@ -1,3 +1,14 @@
+@extends('layouts.app')
+
+@section('content')
+
 <div>
-    <!-- Simplicity is the consequence of refined emotions. - Jean D'Alembert -->
+    <form method="POST" action="{{route('usuarios.logout')}}">
+        @csrf
+        <input type="submit" value="sair">
+    </form>
+
+    @if (Auth::check())
+        <span>voce esta logado</span>
+    @endif
 </div>

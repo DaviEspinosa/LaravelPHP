@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -12,7 +11,7 @@ class Usuario extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $fillable =[
-        'nome', 'email', 'password',
+        'nome', 'email', 'password', 'tipo', 'cnpj', 'nome_empresa'
     ];
 
     protected $hidden =[
