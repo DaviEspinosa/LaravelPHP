@@ -25,25 +25,24 @@ class UsuarioController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+            'email' => 'required|string|email',
+            'password' => 'required|string',
         ]);
 
+        $usuario = Usuario::where('email', $request->email)->first();
 
-        if (Auth::guard('web')->attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+        if ($usuario && Hash::check($request->password, $usuario->password)) {
+            session(['usuario_id' => $usuario->id]);
+            return redirect()->route('dashboard');
+        } else {
+            return back()->withErrors([
+                'email' => 'As credenciais não correspondem aos nossos registros.',
+            ]);
         }
-
-
-        return back()->withErrors([
-            'email' => 'As credenciais não correspondem aos nossos registros.',
-        ])->onlyInput('email');
     }
 
-
     // Exibir o formulário de registro
-    public function showRegistroForm()
+    public function showRegisterForm()
     {
         return view('usuarios.registro');
     }
@@ -53,23 +52,23 @@ class UsuarioController extends Controller
     public function registro(Request $request)
     {
         $request->validate([
-            'nome' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:usuarios',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:usuario',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
 
         $usuario = Usuario::create([
-            'nome' => $request->nome,
+            'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
 
-        // Auth::login($usuario);
+        //Auth::login($usuario);
 
 
-        return redirect('/dashboard');
+        return redirect('/');
     }
 
 
