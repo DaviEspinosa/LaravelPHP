@@ -1,10 +1,25 @@
+{{-- @extends('layouts.app') --}}
+
+{{-- @section('content') --}}
+
 <header>
-    <img src="" alt="logo">
-    <div class="nav-bar">
-        <li><a href="">home</a></li>
-        <li><a href="">sobre nós</a></li>
-        <li><a href="">contato</a></li>
-        <li><a href="">vagas</a></li>
-        <li><a href="">login/cadastro</a></li>
+
+    <div>
+        <a href="/login">Login</a>
+        <a href="/registro">Registra-se</a>
     </div>
+
+    @if (Auth::check())
+        <div>
+            <h3>
+                Olá, {{Auth::user()->nome}}
+            </h3>
+        </div>
+        <div>
+            <form action="/logout" method="post">
+            @csrf
+            <input type="submit" placeholder="sair">
+            </form>
+        </div>
+    @endif
 </header>

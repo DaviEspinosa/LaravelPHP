@@ -15,7 +15,7 @@ return new class extends Migration
             $table->text('descricao');
             $table->string('localizacao');
             $table->decimal('salario', 10, 2)->nullable();
-            $table->foreignId('empresa_id')->constrained('empresas')->
+            $table->string('empresa')->constrained('empresas')->
             onDelete('cascade');  // Relaciona a vaga à empresa
 
 
