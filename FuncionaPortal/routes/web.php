@@ -4,7 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\VagaController;
-use App\Http\MiddleWare\VagaMiddleware;
+use App\Http\Middleware\VagaMiddleware;
 
 
 // Rota para exibir a homePage
@@ -40,10 +40,6 @@ name('usuarios.logout');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
-
-// Route::get('/vagas' function(){
-//     return view ('');
-// });
 
 Route::resource('/vagas',VagaController::class)->
 middleware(VagaMiddleware::class);

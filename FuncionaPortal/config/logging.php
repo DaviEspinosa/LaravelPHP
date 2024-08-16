@@ -127,12 +127,6 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
-        'console' => [
-            'driver' => 'single',
-            'path' => 'php://stdout', // Envia logs para o terminal
-            'level' => 'debug',
-        ],
-
     ],
 
 ];

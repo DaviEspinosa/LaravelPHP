@@ -7,7 +7,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use App\Models\Usuario;
 
 
@@ -61,28 +60,20 @@ class UsuarioController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        // Verifique se o código chega aqui
-        Log::info('Validação passou, criando usuário.');
 
-        try {
-            // Cria um novo usuário
-            $usuario = Usuario::create([
-                'nome' => $request->nome,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-            ]);
+        // Cria um novo usuário
+        $usuario = Usuario::create([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
 
-            // Faz login automático do novo usuário
-            Auth::guard('usuario')->login($usuario);
+        // Faz login automático do novo usuário
+        Auth::guard('usuario')->login($usuario);
 
-            Log::info('Validação passou, criando usuário.');    
 
-            return redirect('/dashboard');
-        } catch (\Throwable $th) {
-            // Registra a exceção se houver erro
-            Log::error('Erro ao criar usuário: ' . $th->getMessage());
-        }
+        return redirect('/dashboard');
     }
 
 
@@ -94,7 +85,7 @@ class UsuarioController extends Controller
 
 
         $request->session()->invalidate();
-        $request->session()->regenerate(); // Invalida a sessão
+        $request->session()->regenerate();// Invalida a sessão
 
 
         return redirect('/');

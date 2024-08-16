@@ -5,13 +5,13 @@
 {{-- formulario --}}
 <div class="container">
     <h1>Registrar-se</h1>
-    <form method="POST" action="{{ route('usuarios.registro') }}">
+    <form action="{{ route('usuarios.registro') }}" method="post">
         @csrf
 
 
         <div class="form-group">
             <label for="name">Nome</label>
-            <input type="text" name="nome" class="form-control" required>
+            <input type="text" name="name" class="form-control" required>
         </div>
 
 
