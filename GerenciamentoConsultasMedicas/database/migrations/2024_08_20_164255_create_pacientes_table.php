@@ -13,8 +13,11 @@ return new class extends Migration
     {
         // Para criar uma tabela em meu banco de dados
         Schema::create('pacientes', function (Blueprint $table) {
-            $table->string('cpf', 11)->primary();
+            $table->id();
+            $table->string('cpf', 14)->primary();
             $table->string('nome');
+            $table->string('email');
+            $table->string('password');
             $table->string('telefone');
             $table->text('observacao')->nullable();
             $table->timestamps();

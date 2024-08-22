@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('medicos', function (Blueprint $table) {
             $table->string('cpf')->primary();
+            $table->string('email');
+            $table->string('password');
             $table->string('nome');
             $table->string('telefone');//telefone será string para armazenar 
             $table->string('especialidade');

@@ -2,33 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\Cpf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MedicoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+
+// ===========================================================
+// O Médico já Estaria cadastrado em meu banco, com o insert |
+// ===========================================================
+
+public function showLoginForm()
+{
+    return view('usuarios.login');
+}
+
+public function login(Request $request)
+{
+    // Validações para o login
+    $credentials = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    // // Tenta autenticar com o guard 'usuario'
+    if (Auth::guard('usuario')->attempt($credentials)) {
+        $request->session()->regenerate(); // Regenera a sessão para evitar fixação de sessão
+        return redirect('/');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+}
 
     /**
      * Display the specified resource.

@@ -2,13 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
-class Paciente extends Model
+class Paciente extends Authenticatable
 {
             // Atributos que podem ser preenchidos em massa
-            protected $fillable = ['nome', 'telefone', 'cpf', 'observacao'];
+            protected $fillable = [
+                'nome',
+                'email',
+                'password', 
+                'telefone', 
+                'cpf', 
+                'observacao'
+            ];
 
             // Cast de atributos (exemplo)
             protected $casts = [

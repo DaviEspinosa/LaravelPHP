@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Medico extends Model
 {
         // Atributos que podem ser preenchidos em massa
-        protected $fillable = [ 'cpf', 'nome', 'telefone', 'especializacao'];
+        protected $fillable = [ 'cpf','password', 'email' ,'nome', 'telefone', 'especializacao'];
 
         // Cast de atributos (exemplo)
         protected $casts = [

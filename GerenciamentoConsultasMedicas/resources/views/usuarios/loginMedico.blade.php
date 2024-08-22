@@ -3,17 +3,16 @@
 @section('content')
 {{-- formulário --}}
 <div class="container">
-    <h1>Login</h1>
+    <h1>Login Médico</h1>
 
     {{-- Mensagens de sucesso ou erro --}}
 
-    <form method="POST" action="{{ route('usuarios.login') }}">
+    <form method="POST" action="{{ route('usuarios.loginMedico') }}">
         @csrf
 
-
         <div class="form-group">
-            <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required>
-            @error('email')
+            <input type="text" name="cpf" class="form-control" placeholder="CPF" value="{{ old('cpf') }}" required>
+            @error('cpf')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>

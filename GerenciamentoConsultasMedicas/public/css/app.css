@@ -1,0 +1,46 @@
+/* Resetando alguns estilos básicos */
+body,html, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header {
+   display: flex;
+   justify-content: center;
+   height: 50px;
+   width: 100%;
+}
+
+.nav-bar {
+width: 80%;
+height: 100%;
+display: flex;
+justify-content: space-between;
+}
+
+.navegacao {
+width: 50%;
+display: flex;
+justify-content: space-evenly;
+}
+.navegacao li{
+    display: flex;
+    align-items: center;
+}
+
+.cadastro_login {
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.cadastro_login li{
+    display: flex;
+    align-items: center;
+}
+
+.navegacao a,
+.cadastro_login a {
+    text-decoration: none; /* Adiciona sublinhado ao passar o mouse */
+}
+
