@@ -1,0 +1,43 @@
+.body-cadastro{
+    margin-top: 80px;
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.container-img{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-img img{
+    width: 100%;
+}
+.container-cadastro{
+    width: 40%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    height: 70%;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.form-inputs{
+    height: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.form-inputs input{
+    width: 45%;
+    height: 30px;
+    border: none;
+    border-bottom: 2px solid #33b398;
+}

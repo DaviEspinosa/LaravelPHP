@@ -60,6 +60,12 @@ class PacienteController extends Controller
             'password' => ['required'],
         ]);
 
+        // // Tenta autenticar com o guard 'usuario'
+        if (Auth::guard('usuario')->attempt($credentials)) {
+            $request->session()->regenerate(); // Regenera a sessão para evitar fixação de sessão
+            return redirect('dashboard  ');
+        }
+
 
         // // Verificar as credenciais do usuário
         // if (Auth::attempt([
@@ -69,12 +75,6 @@ class PacienteController extends Controller
         //     // Autenticação bem-sucedida
         //     return redirect()->intended('/');
         // }
-
-        // // Tenta autenticar com o guard 'usuario'
-        if (Auth::guard('usuario')->attempt($credentials)) {
-            $request->session()->regenerate(); // Regenera a sessão para evitar fixação de sessão
-            return redirect('/');
-        }
 
     }
 

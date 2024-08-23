@@ -13,12 +13,12 @@ class MedicoController extends Controller
 // O Médico já Estaria cadastrado em meu banco, com o insert |
 // ===========================================================
 
-public function showLoginForm()
+public function showLoginMedicoForm()
 {
-    return view('usuarios.login');
+    return view('usuarios.loginMedico');
 }
 
-public function login(Request $request)
+public function loginMedico(Request $request)
 {
     // Validações para o login
     $credentials = $request->validate([
@@ -29,7 +29,7 @@ public function login(Request $request)
     // // Tenta autenticar com o guard 'usuario'
     if (Auth::guard('usuario')->attempt($credentials)) {
         $request->session()->regenerate(); // Regenera a sessão para evitar fixação de sessão
-        return redirect('/');
+        return redirect('dashboard');
     }
 
 }

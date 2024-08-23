@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/formularios/loginCss.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/formularios/cadastroCss.css') }}">
 </head>
 <body>
     @include('parts.header')

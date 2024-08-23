@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('medicos', function (Blueprint $table) {
+            $table->id();
             $table->string('cpf')->primary();
             $table->string('email');
             $table->string('password');
             $table->string('nome');
-            $table->string('telefone');//telefone será string para armazenar 
+            $table->string('telefone'); //telefone será string para armazenar
             $table->string('especialidade');
             $table->timestamps();
         });

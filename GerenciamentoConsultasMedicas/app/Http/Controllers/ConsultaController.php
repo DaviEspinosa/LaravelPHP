@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Consulta;
+use App\Models\Medico;
 use Illuminate\Http\Request;
 
 class ConsultaController extends Controller
@@ -9,30 +11,27 @@ class ConsultaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function showAgendamentoForm()
     {
-        //
+        return view('usuarios.agendamento');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // Armazena a consulta no banco de dados
+    public function agendarConsulta(Request $request)
     {
-        //
+        $request->validate([
+            'cpf_paciente' => 'required|string',
+            'cpf_medico' => 'required|string',
+            'data_hora' => 'required|date',
+            'descricao' => 'nullable|string',
+        ]);
+
+        Consulta::create($request->all());
+
+        return redirect()->route('dashboard')->with('success', 'Consulta agendada com sucesso!');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //

@@ -1,30 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- formulário --}}
-<div class="container">
-    <h1>Login Médico</h1>
+    {{-- formulário --}}
+    <div class="body-login">
+        <div class="container-login">
+            <h1>Login Médico</h1>
 
-    {{-- Mensagens de sucesso ou erro --}}
+            {{-- Mensagens de sucesso ou erro --}}
 
-    <form method="POST" action="{{ route('usuarios.loginMedico') }}">
-        @csrf
+            <form method="POST" action="{{ route('usuarios.loginMedico') }}">
+                @csrf
 
-        <div class="form-group">
-            <input type="text" name="cpf" class="form-control" placeholder="CPF" value="{{ old('cpf') }}" required>
-            @error('cpf')
+                <div class="form-input">
+                    <input type="text" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}"
+                        required>
+                    {{-- @error('cpf')
                 <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div>
+            @enderror --}}
 
-        <div class="form-group">
-            <input type="password" name="password" class="form-control" placeholder="Senha" value="{{ old('password') }}" required>
-            @error('password')
+                    <input type="password" name="password" class="form-control" placeholder="Senha"
+                        value="{{ old('password') }}" required>
+                    {{-- @error('password')
                 <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
+            @enderror --}}
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
         </div>
-
-        <button type="submit" class="btn btn-primary">Entrar</button>
-    </form>
-</div>
+    </div>
 @endsection

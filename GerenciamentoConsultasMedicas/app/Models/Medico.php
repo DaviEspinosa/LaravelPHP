@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Medico extends Model
+
+class Medico extends Authenticatable
 {
         // Atributos que podem ser preenchidos em massa
         protected $fillable = [ 'cpf','password', 'email' ,'nome', 'telefone', 'especializacao'];
@@ -15,7 +16,7 @@ class Medico extends Model
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
         ];
-    
+
         // Relação com o model Consulta
         public function consultas()
         {
